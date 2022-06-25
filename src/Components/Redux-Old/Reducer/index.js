@@ -1,10 +1,9 @@
 import axios from "axios";
 
-
 const initialState2 = {
 
-    user2: []
-  
+    user2: [] 
+
 }
 
 export default function rootReducer(state = initialState2, action) {

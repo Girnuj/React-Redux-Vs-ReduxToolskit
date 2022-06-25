@@ -8,7 +8,7 @@ import store from './Components/Redux-Toolkit/StoreT/store';
 
 function App() {
   return (
-    //Store de Redux-Toolkit
+    //store de Redux-Toolkit
     <>
       <Provider store={store}>
         <Navbar />

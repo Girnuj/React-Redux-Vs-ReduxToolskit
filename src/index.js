@@ -9,6 +9,7 @@ import store2 from './Components/Redux-Old/Store/Store2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  //Redux-old
   <Provider store={store2}>
     <React.StrictMode>
       <App />

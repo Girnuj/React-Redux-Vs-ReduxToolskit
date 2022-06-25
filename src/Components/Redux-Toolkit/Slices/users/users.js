@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"; 
 import axios from "axios";
-
-//Reducer, states and actions 
+//Se pueden crear diferentes Slice en diferentes carpetas para modularizar
+//Reducer, states and actions of users
 export const userSlice = createSlice({
     //definir reducer y su estado
     name: 'users',
@@ -17,7 +17,7 @@ export const userSlice = createSlice({
 });
 //exportamos para utilizar en la accion
 export const { setUserList } = userSlice.actions;
-
+//exportamos el reducer para agregarlo en el store = configureStore
 export default userSlice.reducer;
 //traemos la informacion y se guarda en el estado en que igualamos la action.payload
 //las funciones se pueden hacer en otro archivo y exportarlos

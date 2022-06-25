@@ -3,11 +3,12 @@ import axios from "axios";
 //Se pueden crear diferentes Slice en diferentes carpetas para modularizar
 //Reducer, states and actions of users
 export const userSlice = createSlice({
-    //definir reducer y su estado
+    //definir reducer y su estado/os
     name: 'users',
     initialState: {
         list: []
     },
+    //aqui todas las aciones
     //igualar el estado a la accion que incimos mas abajo
     reducers: {
         setUserList: (state, action) => {
@@ -15,15 +16,17 @@ export const userSlice = createSlice({
         }
     }
 });
-//exportamos para utilizar en la accion
+//exportamos para utilizar en la accion (fetchAllUsers)
 export const { setUserList } = userSlice.actions;
+
 //exportamos el reducer para agregarlo en el store = configureStore
 export default userSlice.reducer;
+
 //traemos la informacion y se guarda en el estado en que igualamos la action.payload
 //las funciones se pueden hacer en otro archivo y exportarlos
 export const fetchAllUsers = () => (dispatch) => {
     axios.get('https://reqres.in/api/users?per_page=4')
     .then((response) => {
         dispatch(setUserList(response.data.data))
-    })
+    }).catch(e => console.error(e))
 }

@@ -15,14 +15,31 @@ export const userSlice = createSlice({
         //aqui todas las aciones que utilecemos
         setUserList: (state, action) => {
             state.list = action.payload;
-        }
+            // state.list.push(action.payload) esto es lo mismo
+        },
+
+        // o simplemente podemos hacer como antes
+
+        // setUserList(state, action){
+        //     return {                 
+        //         ...state,
+        //         user: action.payload
+        //     }
+        // }
+        
+        //para hacer diferente logica se debe igualar el estado a la logica, 
+        // no hay necesidad de crear variables de por medio
+
+        // setUserList: (state, action) => {
+        //     state.list = state.list.filter(e => e.x != e.x)
+        // }
+
     }
 });
 //exportamos para utilizar en la accion o funcion (fetchAllUsers)
-        //podemos destructurar todas
 export const { setUserList } = userSlice.actions;// igualar a las acciones que estan dentro del reducer
 
-//exportamos el reducer para agregarlo en el store = configureStore
+//exportamos el reducer 'user' para agregarlo en el store = configureStore
 export default userSlice.reducer;
 
 //traemos la informacion y se guarda en el estado en que igualamos la action.payload
@@ -31,5 +48,5 @@ export const fetchAllUsers = () => (dispatch) => {
     axios.get('https://reqres.in/api/users?per_page=4')
     .then((response) => {
         dispatch(setUserList(response.data.data))
-    }).catch(e => console.error(e))
+    }).catch(e => console.error(`error fetchAllUsers '${e}'`))
 }

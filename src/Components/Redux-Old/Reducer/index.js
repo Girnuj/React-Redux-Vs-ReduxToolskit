@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const initialState2 = {
+const initialState = {
 
     user2: [] 
 
 }
 
-export default function rootReducer(state = initialState2, action) {
+export default function rootReducer(state = initialState, action) {
     switch (action.type) {
         case GET_USERS:
             return{
@@ -26,7 +26,7 @@ export const fetchAllUsers2 = () => (dispatch) => {
             type: GET_USERS,
             payload: response.data
         })
-    })
+    }).catch(e => console.error(e))
 }
 
 export const GET_USERS = "fetchAllUsers2"
